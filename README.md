@@ -1,6 +1,8 @@
 # plafinder
 
-A new Flutter project.
+Hello this is my first project using Flutter,
+
+Because recently i am interested in Gunpla World i would like to make some Mobile Apps that contain Gunpla kits that available around.
 
 ## Getting Started
 
