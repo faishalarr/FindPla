@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:plafinder/itemcard.dart';
 import 'package:plafinder/list_gunpla.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:plafinder/aboutgunpla.dart';
+import 'package:plafinder/pages/aboutgunpla.dart';
 
 class LandPage extends StatelessWidget {
   final List<String> imageList = [
@@ -76,7 +77,34 @@ class LandPage extends StatelessWidget {
               ),
             ),
           ),
-          Container()
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 30, left: 20, bottom: 20),
+                child: Text(
+                  'Find Your Gunpla:',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
+          ),
+          SizedBox(
+            height: 400,
+            child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: gunplaList.length,
+              itemBuilder: (context, int key) {
+                return itemCards(
+                  index: key,
+                );
+              },
+            ),
+          )
         ],
       ))),
     );
