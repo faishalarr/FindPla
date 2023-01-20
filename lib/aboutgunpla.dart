@@ -47,7 +47,7 @@ class aboutGunpla extends StatelessWidget {
                 ],
               ),
               Container(
-                margin: EdgeInsets.only(top: 20, right: 10),
+                margin: EdgeInsets.only(top: 18, right: 10),
                 child: Image.network(
                     'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Gunpla_Logo.svg/1200px-Gunpla_Logo.svg.png'),
               ),
