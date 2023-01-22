@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plafinder/itemcard.dart';
 import 'package:plafinder/list_gunpla.dart';
+import 'package:plafinder/pages/exploregunpla.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:plafinder/pages/aboutgunpla.dart';
 
@@ -80,15 +81,37 @@ class LandPage extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 30, left: 20, bottom: 20),
-                child: Text(
-                  'Find Your Gunpla:',
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(top: 30, left: 20, bottom: 20),
+                    child: Text(
+                      'Find Your Gunpla:',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.only(top: 30, right: 10, bottom: 20),
+                      child: InkWell(
+                          child: Text(
+                            'Explore more ',
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ExploreGunpla()),
+                            );
+                          }))
+                ],
               )
             ],
           ),

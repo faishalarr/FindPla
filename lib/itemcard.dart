@@ -51,12 +51,10 @@ class itemCards extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
-                          Text(
-                            gunplaList[index].grade,
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey[500],
-                                fontWeight: FontWeight.w300),
+                          Image.asset(
+                            gunplaList[index].imageGrade,
+                            width: 30,
+                            height: 30,
                           ),
                           SizedBox(
                             height: 20,

@@ -61,6 +61,22 @@ class _DetailGunplaState extends State<DetailGunpla> {
                     SizedBox(
                       height: 10,
                     ),
+                    Text("Grade",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w900)),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Image.asset(
+                      gunplaList[widget.index].imageGrade,
+                      width: 50,
+                      height: 50,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       "Description",
                       style: TextStyle(
