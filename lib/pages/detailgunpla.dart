@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plafinder/list_gunpla.dart';
+import 'package:plafinder/model/list_gunpla.dart';
 
 class DetailGunpla extends StatefulWidget {
   final int index;

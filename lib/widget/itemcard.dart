@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plafinder/list_gunpla.dart';
+import 'package:plafinder/model/list_gunpla.dart';
 import 'package:plafinder/pages/detailgunpla.dart';
 
 class itemCards extends StatelessWidget {

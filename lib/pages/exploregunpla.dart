@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:plafinder/pages/detailgunpla.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:plafinder/itemcard.dart';
-import 'package:plafinder/list_gunpla.dart';
+import 'package:plafinder/widget/itemcard.dart';
+import 'package:plafinder/model/list_gunpla.dart';
 
 class ExploreGunpla extends StatefulWidget {
   @override
@@ -15,8 +15,6 @@ class _ExploreGunplaState extends State<ExploreGunpla> {
   String filter = "";
 
   List<Gunpla> gunplas = gunplaList;
-
-  // Get json result and convert it to model. Then add
 
   @override
   initState() {
@@ -44,7 +42,7 @@ class _ExploreGunplaState extends State<ExploreGunpla> {
             child: new TextField(
               controller: searchController,
               decoration: InputDecoration(
-                  hintText: 'Search',
+                  hintText: 'Enter name or grade',
                   contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0)),
@@ -61,7 +59,7 @@ class _ExploreGunplaState extends State<ExploreGunpla> {
               itemBuilder: (context, index) {
                 return filter == null || filter == ""
                     ? itemCards(index: index)
-                    : '${gunplas[index].name}'
+                    : '${gunplas[index].name} || ${gunplas[index].grade}'
                             .toLowerCase()
                             .contains(filter.toLowerCase())
                         ? itemCards(index: index)
@@ -73,22 +71,4 @@ class _ExploreGunplaState extends State<ExploreGunpla> {
       ),
     ));
   }
-
-  onSearchTextChanged(String text) async {
-    _searchResult.clear();
-    if (text.isEmpty) {
-      setState(() {});
-      return;
-    }
-
-    _userDetails.forEach((userDetail) {
-      if (userDetail.name.contains(text)) ;
-    });
-
-    setState(() {});
-  }
 }
-
-List<Gunpla> _searchResult = gunplaList;
-
-List<Gunpla> _userDetails = gunplaList;
