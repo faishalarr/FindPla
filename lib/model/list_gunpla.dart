@@ -7,6 +7,7 @@ class Gunpla {
   String imageAsset;
   String imageGrade;
   List<String> imageUrls;
+  String ytlink;
 
   Gunpla({
     required this.name,
@@ -17,6 +18,7 @@ class Gunpla {
     required this.imageAsset,
     required this.imageGrade,
     required this.imageUrls,
+    required this.ytlink,
   });
 }
 
@@ -30,6 +32,7 @@ List<Gunpla> gunplaList = [
       price: '400.000',
       imageAsset: 'images/00Qant.webp',
       imageGrade: 'images/RGlogo.webp',
+      ytlink: 'mYd_l3E7yOc',
       imageUrls: [
         'https://bbts1.azureedge.net/images/p/full/2020/05/a5d0f4b3-f8d7-4363-a569-ed615deb9e52.jpg',
         'https://i.pinimg.com/originals/dd/90/05/dd900555f709b81cbd0060f5c7884012.jpg',
@@ -44,6 +47,7 @@ List<Gunpla> gunplaList = [
       price: '400.000',
       imageAsset: 'images/00Raiser.webp',
       imageGrade: 'images/RGlogo.webp',
+      ytlink: 'IddxplDVGw8',
       imageUrls: [
         'https://bbts1.azureedge.net/images/p/full/2020/05/a5d0f4b3-f8d7-4363-a569-ed615deb9e52.jpg',
         'https://i.pinimg.com/originals/dd/90/05/dd900555f709b81cbd0060f5c7884012.jpg',
@@ -58,6 +62,7 @@ List<Gunpla> gunplaList = [
       price: '400.000',
       imageAsset: 'images/StrikeFreedom.jpg',
       imageGrade: 'images/RGlogo.webp',
+      ytlink: 'mYd_l3E7yOc',
       imageUrls: [
         'https://bbts1.azureedge.net/images/p/full/2020/05/a5d0f4b3-f8d7-4363-a569-ed615deb9e52.jpg',
         'https://i.pinimg.com/originals/dd/90/05/dd900555f709b81cbd0060f5c7884012.jpg',
@@ -72,6 +77,7 @@ List<Gunpla> gunplaList = [
       price: '400.000',
       imageAsset: 'images/Aerial.jpg',
       imageGrade: 'images/HGlogo.webp',
+      ytlink: 'mYd_l3E7yOc',
       imageUrls: [
         'https://bbts1.azureedge.net/images/p/full/2020/05/a5d0f4b3-f8d7-4363-a569-ed615deb9e52.jpg',
         'https://i.pinimg.com/originals/dd/90/05/dd900555f709b81cbd0060f5c7884012.jpg',

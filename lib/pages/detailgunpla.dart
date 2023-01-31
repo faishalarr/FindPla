@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:plafinder/model/list_gunpla.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class DetailGunpla extends StatefulWidget {
   final int index;
+
   const DetailGunpla({Key? key, required this.index}) : super(key: key);
 
   @override
@@ -10,6 +12,28 @@ class DetailGunpla extends StatefulWidget {
 }
 
 class _DetailGunplaState extends State<DetailGunpla> {
+  late YoutubePlayerController _controller;
+  @override
+  void initState() {
+    _controller = YoutubePlayerController(
+        initialVideoId: gunplaList[widget.index].ytlink,
+        flags: YoutubePlayerFlags(
+          autoPlay: false,
+        ));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  late PlayerState _playerState;
+  late YoutubeMetaData _videoMetaData;
+  double _volume = 100;
+  bool _muted = false;
+  bool _isPlayerReady = false;
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -99,6 +123,10 @@ class _DetailGunplaState extends State<DetailGunpla> {
                     ),
                     SizedBox(
                       height: 40,
+                    ),
+                    YoutubePlayer(
+                      controller: _controller,
+                      showVideoProgressIndicator: true,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

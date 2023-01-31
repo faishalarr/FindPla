@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plafinder/pages/exploregunpla.dart';
 import 'package:intl/intl.dart';
+import 'package:plafinder/pages/exploreseries.dart';
 
 class DrawerWidget extends StatelessWidget {
   String cdate1 = DateFormat("EEEEE, dd, yyyy").format(DateTime.now());
@@ -69,7 +70,10 @@ class DrawerWidget extends StatelessWidget {
           _drawerItem(
               icon: Icons.group,
               text: 'Shared with me',
-              onTap: () => print('Tap Shared menu')),
+              onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TabBarPage()),
+                  )),
           _drawerItem(
               icon: Icons.access_time,
               text: 'Recent',
