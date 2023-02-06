@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plafinder/model/list_gunpla.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:full_screen_image/full_screen_image.dart';
 
 class DetailGunpla extends StatefulWidget {
   final int index;
@@ -27,12 +28,6 @@ class _DetailGunplaState extends State<DetailGunpla> {
     _controller.dispose();
     super.dispose();
   }
-
-  late PlayerState _playerState;
-  late YoutubeMetaData _videoMetaData;
-  double _volume = 100;
-  bool _muted = false;
-  bool _isPlayerReady = false;
 
   @override
   Widget build(BuildContext context) {
@@ -120,6 +115,43 @@ class _DetailGunplaState extends State<DetailGunpla> {
                           fontWeight: FontWeight.normal,
                           letterSpacing: 0.5,
                           wordSpacing: 1.5),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      height: 200,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: gunplaList[widget.index].imageUrls.map((url) {
+                          return Padding(
+                            padding: EdgeInsets.all(4.0),
+                            child: FullScreenWidget(
+                              child: Center(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.network(url, loadingBuilder:
+                                      (context, child, loadingProgress) {
+                                    if (loadingProgress == null) return child;
+
+                                    return Center(
+                                        child: CircularProgressIndicator(
+                                      value:
+                                          loadingProgress.expectedTotalBytes !=
+                                                  null
+                                              ? loadingProgress
+                                                      .cumulativeBytesLoaded /
+                                                  loadingProgress
+                                                      .expectedTotalBytes!
+                                              : null,
+                                    ));
+                                  }),
+                                ),
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      ),
                     ),
                     SizedBox(
                       height: 40,

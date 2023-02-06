@@ -22,8 +22,11 @@ class _LandPageState extends State<LandPage> {
     "https://images.wallpapersden.com/image/download/peter-parker-spider-man-homecoming_bGhsa22UmZqaraWkpJRmZ21lrWxnZQ.jpg",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvUgui-suS8DgaljlONNuhy4vPUsC_UKvxJQ&usqp=CAU",
   ];
+
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       key: _scaffoldKey,
       drawer: DrawerWidget(),
@@ -33,36 +36,45 @@ class _LandPageState extends State<LandPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
+              height: height * 0.075,
+              color: Colors.blue,
               child: Padding(
-                  padding: EdgeInsets.only(top: 15, left: 10, right: 15),
+                  padding: EdgeInsets.only(top: 10, bottom: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      IconButton(
-                          onPressed: () =>
-                              _scaffoldKey.currentState!.openDrawer(),
-                          icon: Icon(
-                            Icons.person,
-                            size: 30,
-                          )),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 13, right: 5),
+                        child: IconButton(
+                            onPressed: () =>
+                                _scaffoldKey.currentState!.openDrawer(),
+                            icon: Icon(
+                              Icons.person,
+                              size: 30,
+                            )),
+                      ),
                       Text(
                         'FindPla',
                         textAlign: TextAlign.start,
                         style: TextStyle(
                             fontSize: 30, fontWeight: FontWeight.bold),
                       ),
-                      InkWell(
-                          child: const Icon(
-                            Icons.info,
-                            size: 30,
-                          ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const aboutGunpla()),
-                            );
-                          })
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: InkWell(
+                            child: const Icon(
+                              Icons.info,
+                              size: 30,
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const aboutGunpla()),
+                              );
+                            }),
+                      )
                     ],
                   ))),
           Container(
@@ -80,12 +92,23 @@ class _LandPageState extends State<LandPage> {
                           child: Stack(
                             fit: StackFit.expand,
                             children: <Widget>[
-                              Image.network(
-                                e,
-                                width: 1050,
-                                height: 350,
-                                fit: BoxFit.fill,
-                              )
+                              Image.network(e,
+                                  width: 1050,
+                                  height: 350,
+                                  fit: BoxFit.fill, loadingBuilder:
+                                      (context, child, loadingProgress) {
+                                if (loadingProgress == null) return child;
+
+                                return Center(
+                                    child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes !=
+                                          null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                          loadingProgress.expectedTotalBytes!
+                                      : null,
+                                ));
+                                // You can use LinearProgressIndicator or CircularProgressIndicator instead
+                              })
                             ],
                           ),
                         ))

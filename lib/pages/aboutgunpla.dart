@@ -49,7 +49,19 @@ class aboutGunpla extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(top: 18, right: 10),
                 child: Image.network(
-                    'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Gunpla_Logo.svg/1200px-Gunpla_Logo.svg.png'),
+                    'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Gunpla_Logo.svg/1200px-Gunpla_Logo.svg.png',
+                    loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+
+                  return Center(
+                      child: CircularProgressIndicator(
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                            loadingProgress.expectedTotalBytes!
+                        : null,
+                  ));
+                  // You can use LinearProgressIndicator or CircularProgressIndicator instead
+                }),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
