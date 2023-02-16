@@ -13,6 +13,7 @@ class ExploreGunpla extends StatefulWidget {
 class _ExploreGunplaState extends State<ExploreGunpla> {
   TextEditingController searchController = new TextEditingController();
   String filter = "";
+  bool isPressed = false;
 
   List<Gunpla> gunplas = gunplaList;
 
@@ -52,6 +53,44 @@ class _ExploreGunplaState extends State<ExploreGunpla> {
                         BorderSide(color: Colors.lightGreen, width: 2.5),
                   )),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TextButton.icon(
+                icon: RotatedBox(
+                  quarterTurns: 1,
+                  child: Icon(
+                    Icons.compare_arrows,
+                    size: 28,
+                  ),
+                ),
+                label: Text(
+                  'Name',
+                  style: TextStyle(fontSize: 16),
+                ),
+                onPressed: () => setState(
+                    () => gunplas..sort((a, b) => a.name.compareTo(b.name))),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: TextButton.icon(
+                  icon: RotatedBox(
+                    quarterTurns: 1,
+                    child: Icon(
+                      Icons.compare_arrows,
+                      size: 28,
+                    ),
+                  ),
+                  label: Text(
+                    'Grade',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  onPressed: () => setState(() =>
+                      gunplas..sort((a, b) => a.grade.compareTo(b.grade))),
+                ),
+              ),
+            ],
           ),
           new Expanded(
             child: new ListView.builder(
