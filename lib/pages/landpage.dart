@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:plafinder/widget/itemcard.dart';
 import 'package:plafinder/model/list_gunpla.dart';
+import 'package:plafinder/model/list_twfm.dart';
 import 'package:plafinder/pages/exploregunpla.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:plafinder/pages/aboutgunpla.dart';
 import 'package:plafinder/widget/drawerwidget.dart';
+import 'package:plafinder/widget/twfmcard.dart';
 
 class LandPage extends StatefulWidget {
   LandPage({Key? key}) : super(key: key);
@@ -154,7 +156,20 @@ class _LandPageState extends State<LandPage> {
             ],
           ),
           SizedBox(
-            height: 400,
+            height: 200,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: twfmList.length,
+              itemBuilder: (context, int key) {
+                return TwfmCards(
+                  index: key,
+                );
+              },
+            ),
+          ),
+          SizedBox(
+            height: 200,
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
@@ -165,6 +180,9 @@ class _LandPageState extends State<LandPage> {
                 );
               },
             ),
+          ),
+          SizedBox(
+            height: 40,
           )
         ],
       ))),
